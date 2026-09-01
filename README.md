@@ -13,15 +13,15 @@ says it was clamped, since a caller that silently gets 14 can't tell a limit fro
 topic that reads as an instruction rather than a subject never reaches the model.
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
+uv venv
+uv pip install -r requirements.txt
 
 .venv/bin/python client_test.py     # connect over stdio, list tools, call them
 .venv/bin/python agent_demo.py      # choose a tool, check it's allowed, then call it
 .venv/bin/python tests.py           # 47 tests, no server or model needed
 ```
 
-A local Ollama model (`llama3.2:3b`) is used for explanations if it's running, and the response
+A local Ollama model (`qwen3:8b`) is used for explanations if it's running, and the response
 labels which source answered. Everything works without it.
 
 ## Also in this repo

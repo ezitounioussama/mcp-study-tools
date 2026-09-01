@@ -138,9 +138,9 @@ Protocol    : 2026-07-28
   "ok": true,
   "topic": "the difference between an MCP tool and an MCP resource",
   "level": "beginner",
-  "explanation": "An MCP (Microsoft Certified Professional) tool is a software application that helps professionals prepare for and pass Microsoft certification exams. It typically includes a set of practice questions, simulations, and other interactive features to test knowledge and skills. On the other hand, an MCP resource is a broader term that encompasses various types of study materials, including books, online courses, and training videos, designed to help individuals learn and prepare for Microsoft certifications. While MCP tools are focused on specific exam preparation, MCP resources provide a more comprehensive learning experience. The distinction between the two lies in their scope and purpose, with tools being more focused on exam preparation and resources being more general learning materials. Understanding the difference between MCP tools and resources is essential for effective learning and certification preparation.",
+  "explanation": "An MCP tool is a software application used to manage and configure Microsoft Cloud services, while an MCP resource refers to the actual cloud resources like virtual machines or storage accounts that are being managed. Tools provide the interface and functionality to interact with resources. Resources are the physical or virtual components that the tools help to set up and maintain. Tools can be used to create, delete, or modify resources. Resources exist in the cloud environment and are managed through the tools. Understanding this difference helps in effectively using cloud services.",
   "source": "model",
-  "characters": 927
+  "characters": 591
 }
 
 ==============================================================================
@@ -195,7 +195,7 @@ Protocol    : 2026-07-28
       "version": "1.0.0",
       "sdk_class": "mcp.server.mcpserver.MCPServer (mcp 2.x)",
       "transport": "stdio",
-      "uptime_seconds": 13.1,
+      "uptime_seconds": 19.6,
       "tools": [
         "create_study_plan",
         "explain_topic",
@@ -206,7 +206,7 @@ Protocol    : 2026-07-28
         "create_study_plan": 1,
         "generate_revision_checklist": 1
       },
-      "model": "llama3.2:3b",
+      "model": "qwen3:8b",
       "model_available": true,
       "limits": {
         "max_topic_length": 120,
@@ -232,7 +232,7 @@ Agent allowlist   : ['create_study_plan', 'explain_topic', 'generate_revision_ch
 --- 1. request: 'Explain MCP resources at an advanced level'
     chose   : explain_topic({"topic": "MCP resources", "level": "advanced"})  -- request asks for an explanation
     gate    : ALLOW  (on the allowlist and advertised by the server)
-    result  : explanation of 'MCP resources' from model, 852 chars
+    result  : explanation of 'MCP resources' from model, 652 chars
 
 --- 2. request: 'Build me a study plan for MCP tools over 30 days'
     chose   : create_study_plan({"topic": "MCP tools", "days": 30})  -- request asks for a plan over time
@@ -265,6 +265,6 @@ Agent allowlist   : ['create_study_plan', 'explain_topic', 'generate_revision_ch
 
 ### tests.py (tail) ###
 ----------------------------------------------------------------------
-Ran 47 tests in 0.010s
+Ran 47 tests in 0.013s
 
 OK
