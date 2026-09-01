@@ -20,7 +20,7 @@ SERVER_VERSION = "1.0.0"
 # Optional local model. The server works fully without it: explain_topic falls
 # back to a deterministic study frame and labels the source.
 OLLAMA_HOST = "http://localhost:11434"
-OLLAMA_MODEL = "llama3.2:3b"
+OLLAMA_MODEL = "qwen3:8b"
 OLLAMA_TIMEOUT = 45
 
 STARTED_AT = time.time()
@@ -60,6 +60,9 @@ def _ollama_generate(prompt):
         "model": OLLAMA_MODEL,
         "prompt": prompt,
         "stream": False,
+        # qwen3 reasons by default and then returns an EMPTY "response", with the
+        # chain of thought in a separate field. The tool wants the answer.
+        "think": False,
         "options": {"temperature": 0.2, "num_predict": 260},
     }
     request = urllib.request.Request(
